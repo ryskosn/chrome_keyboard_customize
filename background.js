@@ -56,6 +56,12 @@ chrome.input.ime.onKeyEvent.addListener(
         chrome.input.ime.sendKeyEvents({"contextID": contextID, "keyData": [keyData]});
         lastRemappedKeyEvent = keyData;
         handled = true;
-      }
+      } else if (keyData.code == "F10") {
+        keyData.code = "p";
+        keyData.key = "p";
+        chrome.input.ime.sendKeyEvents({"contextID": contextID, "keyData": [keyData]});
+        lastRemappedKeyEvent = keyData;
+        handled = true;
+    }
       return handled;
 });
